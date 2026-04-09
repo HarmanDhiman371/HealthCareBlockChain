@@ -1,0 +1,31 @@
+# Build artifacts
+bin/
+obj/
+publish/
+
+# IDE files
+.vs/
+.user/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Secrets and Local Config
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# Database
+healthcare.db
+healthcare.db-shm
+healthcare.db-wal
+*.db
+*.sqlite
+
+# Logs
+logs/
+*.log
+
+# Other
+build_failed_sql.txt
+build_logs.txt
