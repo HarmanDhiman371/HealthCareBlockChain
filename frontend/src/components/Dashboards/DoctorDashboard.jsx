@@ -9,6 +9,8 @@ export default function DoctorDashboard() {
   const [loading, setLoading] = useState(false);
   const [authorizedPatients, setAuthorizedPatients] = useState([]);
 
+  const [recentQueries, setRecentQueries] = useState([]);
+
   useEffect(() => {
     const fetchAuthorizedPatients = async () => {
       try {
@@ -19,6 +21,10 @@ export default function DoctorDashboard() {
       }
     };
     fetchAuthorizedPatients();
+    
+    // Load recent queries from local storage
+    const saved = localStorage.getItem('recentQueries');
+    if (saved) setRecentQueries(JSON.parse(saved));
   }, []);
 
   const fetchRecordsForPatient = async (id) => {
@@ -29,6 +35,13 @@ export default function DoctorDashboard() {
       const res = await api.get(`/records/patient/${id}`);
       setRecords(res.data);
       setPatientId(id);
+      
+      // Update recent queries
+      const newQuery = { id, time: new Date().toISOString() };
+      const updated = [newQuery, ...recentQueries.filter(q => q.id !== id)].slice(0, 5);
+      setRecentQueries(updated);
+      localStorage.setItem('recentQueries', JSON.stringify(updated));
+
     } catch (err) {
       if (err.response?.status === 403) {
         setError('Access Denied by Smart Contract. The patient has not granted you permission.');
@@ -125,6 +138,25 @@ export default function DoctorDashboard() {
               </div>
             )}
           </div>
+
+          {/* Recent Queries (NEW FEATURE) */}
+          {recentQueries.length > 0 && (
+            <div className="bg-slate-900/40 backdrop-blur-md border border-white/10 p-6 rounded-3xl shadow-xl">
+               <h2 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Recent Node Lookups</h2>
+               <div className="space-y-2">
+                 {recentQueries.map(q => (
+                   <button 
+                    key={q.id}
+                    onClick={() => fetchRecordsForPatient(q.id)}
+                    className="w-full flex justify-between items-center p-3 bg-slate-950/50 rounded-xl border border-white/5 hover:border-blue-500/30 hover:bg-blue-500/5 transition-all group"
+                   >
+                     <span className="text-sm font-bold text-slate-300 group-hover:text-white">Patient #{q.id}</span>
+                     <span className="text-[10px] text-slate-600 italic">{new Date(q.time).toLocaleTimeString()}</span>
+                   </button>
+                 ))}
+               </div>
+            </div>
+          )}
 
           {/* Quick Access List */}
           <div className="bg-slate-900/40 backdrop-blur-md border border-white/10 p-6 rounded-3xl shadow-xl">

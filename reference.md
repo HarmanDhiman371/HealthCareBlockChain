@@ -4,7 +4,7 @@ This document explains the architecture, flow, and usage of the HealthCare-Block
 
 ## How to Run the Blockchain
 
-The project uses a local Hardhat node for the Ethereum blockchain testing environment.
+The project uses a local Hardhat node for the Ethereum blockchain2 -0      a` g  testing environment.
 
 1. **Open a terminal** in the `blockchain` directory.
 2. **Start the local Hardhat node**:

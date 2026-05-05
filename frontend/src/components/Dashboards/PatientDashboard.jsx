@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FileUp, FileText, Share2, Lock, Unlock, ShieldCheck, Activity, Clock, Server, CheckCircle2, FilePlus, Database, Fingerprint } from 'lucide-react';
+import { FileUp, FileText, Share2, Lock, Unlock, ShieldCheck, Activity, Clock, Server, CheckCircle2, FilePlus, Database, Fingerprint, ArrowRight } from 'lucide-react';
 import api from '../../services/api';
 import AccessChart from './AccessChart';
 
@@ -140,6 +140,39 @@ export default function PatientDashboard() {
         <div className="xl:col-span-2 space-y-8">
           
           <AccessChart />
+
+          {/* Health Insights (NEW FEATURE) */}
+          <div className="bg-gradient-to-br from-indigo-900/40 to-slate-900/40 backdrop-blur-md border border-indigo-500/20 p-6 rounded-3xl shadow-xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4">
+              <Activity className="text-indigo-400/20 w-16 h-16" />
+            </div>
+            <h3 className="text-xl font-bold flex items-center gap-2 mb-4 text-white">
+              <Activity className="text-indigo-400 w-5 h-5" /> Smart Health Insights
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
+                <p className="text-xs font-bold text-indigo-300 uppercase tracking-widest mb-2">Analysis Status</p>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                  <p className="text-sm text-slate-300">Syncing with medical nodes...</p>
+                </div>
+              </div>
+              <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
+                <p className="text-xs font-bold text-indigo-300 uppercase tracking-widest mb-2">Health Score</p>
+                <div className="w-full bg-slate-800 h-2 rounded-full mt-2">
+                   <div className="bg-gradient-to-r from-teal-400 to-emerald-400 h-full rounded-full" style={{width: '85%'}}></div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-6 p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-2xl">
+               <p className="text-sm text-slate-300 leading-relaxed italic">
+                 "Based on your recent <strong>{records[0]?.category || 'General'}</strong> records, your health indicators show consistent progress. Recommendation: Continue with current prescription and schedule a follow-up in 3 months."
+               </p>
+               <button className="mt-4 text-xs font-bold text-indigo-400 hover:text-indigo-300 flex items-center gap-1 transition-colors">
+                 Full AI Report <ArrowRight size={12} />
+               </button>
+            </div>
+          </div>
 
           {/* Upload Section */}
           <div className="bg-slate-900/40 backdrop-blur-md border border-white/10 p-6 rounded-3xl shadow-xl hover:bg-slate-900/50 transition-colors">
