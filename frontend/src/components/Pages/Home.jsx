@@ -2,6 +2,10 @@ import { ArrowRight, Shield, Zap, Lock, Database, Activity, CheckCircle2, Star, 
 import { Link } from 'react-router-dom';
 
 export default function Home() {
+  const token = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
+  const getStartedPath = token ? (role === 'Patient' ? '/patient' : '/doctor') : '/register';
+
   return (
     <div className="pt-20">
       
@@ -27,7 +31,7 @@ export default function Home() {
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-in fade-in slide-in-from-bottom duration-700 delay-300">
             <Link 
-              to="/register" 
+              to={getStartedPath} 
               className="w-full sm:w-auto px-10 py-5 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-black text-lg shadow-[0_0_30px_rgba(20,184,166,0.3)] hover:shadow-[0_0_50px_rgba(20,184,166,0.5)] hover:-translate-y-1 transition-all flex items-center justify-center gap-3"
             >
               Get Started Now <ArrowRight size={20} />
@@ -105,7 +109,7 @@ export default function Home() {
                   <BenefitItem text="Real-time audit logs for data access" />
                   <BenefitItem text="Zero-knowledge proof integrations (Coming Soon)" />
                 </div>
-                <Link to="/register" className="mt-12 inline-flex items-center gap-2 text-teal-400 font-bold hover:gap-4 transition-all">
+                <Link to={getStartedPath} className="mt-12 inline-flex items-center gap-2 text-teal-400 font-bold hover:gap-4 transition-all">
                   Start your journey <ArrowRight size={20} />
                 </Link>
               </div>

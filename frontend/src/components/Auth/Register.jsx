@@ -41,7 +41,7 @@ export default function Register() {
             <input 
               type="text" required
               value={formData.fullName} onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition text-slate-900 placeholder-slate-500"
               placeholder="John Doe"
             />
           </div>
@@ -50,7 +50,7 @@ export default function Register() {
             <input 
               type="email" required
               value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})}
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition text-slate-900 placeholder-slate-500"
               placeholder="you@example.com"
             />
           </div>
@@ -59,7 +59,7 @@ export default function Register() {
             <input 
               type="password" required
               value={formData.password} onChange={(e) => setFormData({...formData, password: e.target.value})}
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition text-slate-900 placeholder-slate-500"
               placeholder="••••••••"
             />
           </div>

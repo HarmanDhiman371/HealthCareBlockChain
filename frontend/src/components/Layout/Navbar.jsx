@@ -34,7 +34,7 @@ export default function Navbar() {
             <Link to="/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</Link>
             <Link to="/features" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Features</Link>
             <Link to="/about" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">About</Link>
-            <Link to="/contact" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</Link>
+            {/* <Link to="/contact" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</Link> */}
             
             <div className="h-6 w-px bg-white/10 mx-2"></div>
 
@@ -82,7 +82,7 @@ export default function Navbar() {
             <Link to="/" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-medium text-slate-300 hover:text-white border-b border-white/5">Home</Link>
             <Link to="/features" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-medium text-slate-300 hover:text-white border-b border-white/5">Features</Link>
             <Link to="/about" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-medium text-slate-300 hover:text-white border-b border-white/5">About</Link>
-            <Link to="/contact" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-medium text-slate-300 hover:text-white border-b border-white/5">Contact</Link>
+            {/* <Link to="/contact" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-base font-medium text-slate-300 hover:text-white border-b border-white/5">Contact</Link> */}
             
             <div className="pt-4">
               {token ? (
